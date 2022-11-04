@@ -374,8 +374,7 @@ def show_frame():
                 if fr > 30:
                     cv2.putText(frame1, "S MASKOU", (230, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
                     cv2.putText(frame1, "TEPLOTA OK", (230, 280), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
-                    cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2,
-                                cv2.LINE_AA)
+                    cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2, cv2.LINE_AA)
                     m_t_k = cv2.resize(m_t_k, (frame1.shape[1], frame1.shape[0]))
                     dst = cv2.addWeighted(frame1, 0.5, m_t_k, 0.2, 0)
 
@@ -407,8 +406,7 @@ def show_frame():
                 if fr > 30:
                     cv2.putText(frame1, "BEZ MASKY", (230, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
                     cv2.putText(frame1, "TEPLOTA OK", (230, 280), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
-                    cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2,
-                                cv2.LINE_AA)
+                    cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2, cv2.LINE_AA)
                     m_n_t_k = cv2.resize(m_n_t_k, (frame1.shape[1], frame1.shape[0]))
                     dst = cv2.addWeighted(frame1, 0.5, m_n_t_k, 0.2, 0)
             else:
@@ -417,8 +415,7 @@ def show_frame():
                 # cv2.putText(frame1, labelt.title(), (130, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0,0,255), 2)
                 cv2.putText(frame1, "BEZ MASKY", (230, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
                 cv2.putText(frame1, "VYSOKA TEPLOTA", (230, 280), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
-                cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2,
-                            cv2.LINE_AA)
+                cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2, cv2.LINE_AA)
                 m_n_t_n = cv2.resize(m_n_t_n, (frame1.shape[1], frame1.shape[0]))
                 dst = cv2.addWeighted(frame1, 0.5, m_n_t_n, 0.2, 0)
 
