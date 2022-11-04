@@ -382,12 +382,13 @@ def show_frame():
                 # 880
                 # labelt = "Abnormal Temperature"
                 # cv2.putText(frame1, labelt.title(), (130, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0,0,255), 2)
-                cv2.putText(frame1, "S MASKOU", (230, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
-                cv2.putText(frame1, "VYSOKA TEPLOTA", (230, 280), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
-                cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2, cv2.LINE_AA)
-                m_k_t_n = cv2.resize(m_k_t_n, (frame1.shape[1], frame1.shape[0]))
-                dst = cv2.addWeighted(frame1, 0.5, m_k_t_n, 0.2, 0)
-                # dst = cv2.addWeighted(frame1, 0.5, dst, 0.2, 0)
+                if fr > 30:
+                    cv2.putText(frame1, "S MASKOU", (230, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
+                    cv2.putText(frame1, "VYSOKA TEPLOTA", (230, 280), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
+                    cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2, cv2.LINE_AA)
+                    m_k_t_n = cv2.resize(m_k_t_n, (frame1.shape[1], frame1.shape[0]))
+                    dst = cv2.addWeighted(frame1, 0.5, m_k_t_n, 0.2, 0)
+                    # dst = cv2.addWeighted(frame1, 0.5, dst, 0.2, 0)
 
         if object_name == "no mask":
             # print("no mask")
@@ -413,11 +414,12 @@ def show_frame():
                 # labelt = "Abnormal Temperature"
                 # 130, 880
                 # cv2.putText(frame1, labelt.title(), (130, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0,0,255), 2)
-                cv2.putText(frame1, "BEZ MASKY", (230, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
-                cv2.putText(frame1, "VYSOKA TEPLOTA", (230, 280), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
-                cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2, cv2.LINE_AA)
-                m_n_t_n = cv2.resize(m_n_t_n, (frame1.shape[1], frame1.shape[0]))
-                dst = cv2.addWeighted(frame1, 0.5, m_n_t_n, 0.2, 0)
+                if fr > 30:
+                    cv2.putText(frame1, "BEZ MASKY", (230, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
+                    cv2.putText(frame1, "VYSOKA TEPLOTA", (230, 280), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
+                    cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2, cv2.LINE_AA)
+                    m_n_t_n = cv2.resize(m_n_t_n, (frame1.shape[1], frame1.shape[0]))
+                    dst = cv2.addWeighted(frame1, 0.5, m_n_t_n, 0.2, 0)
 
         # cv2.namedWindow("Object detector", cv2.WND_PROP_FULLSCREEN)
         # cv2.setWindowProperty("Object detector", cv2.WND_PROP_FULLSCREEN, 1)
