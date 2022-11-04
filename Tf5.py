@@ -224,13 +224,12 @@ def gfg():
 #         detection_process(frame_resized)
 
 def temp_dete():
-    global fr
-    global temp_normal
-    ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
-    ser.reset_input_buffer()
     # while True:
     # ser.write(b"Hello from Raspberry Pi!\n")
     while True:
+        global fr
+        global temp_normal
+        global ser
         line = ser.readline().decode('utf-8').rstrip()
         if line:
             # print('no')
@@ -439,6 +438,9 @@ def show_frame():
 det_frame = Thread(target=detect_frame)
 # show.start()
 det_frame.start()
+
+ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+ser.reset_input_buffer()
 
 temp = Thread(target=temp_dete).start()
 show_frame()
