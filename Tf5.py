@@ -380,7 +380,7 @@ def show_frame():
             cv2.putText(frame1, label.title(), (160, 850), cv2.FONT_HERSHEY_PLAIN, 2.5, (34, 139, 34), 2)
             if not object_name in previous:
                 previous = object_name
-                temp_dete()
+                # temp_dete()
                 timer = threading.Timer(5.0, gfg)
                 timer.start()
             if temp_normal:
@@ -408,7 +408,7 @@ def show_frame():
             cv2.putText(frame1, label.title(), (110, 850), cv2.FONT_HERSHEY_PLAIN, 2.5, (0, 0, 255), 2)
             if not object_name in previous:
                 previous = object_name
-                temp_dete()
+                # temp_dete()
                 timer = threading.Timer(5.0, gfg)
                 timer.start()
 
