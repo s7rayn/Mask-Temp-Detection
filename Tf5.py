@@ -231,10 +231,12 @@ def temp_dete():
         global temp_normal
         global ser
         line = ser.readline().decode('utf-8').rstrip()
+        print("x")
         if line:
             # print('no')
             json_obj = json.loads(line)
             fr = json_obj["ObjectTemp"]
+            print("y")
             if fr > 37:
                 temp_normal = False
             else:
