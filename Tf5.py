@@ -241,7 +241,7 @@ def temp_dete():
                 temp_normal = False
             else:
                 temp_normal = True
-            time.sleep(1)
+            # time.sleep(1)
             # return json_obj["ObjectTemp"]
 
 
@@ -332,7 +332,7 @@ def detect_frame():
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         frame_resized = cv2.resize(frame_rgb, (width, height))
         detection_process(frame_resized)
-        time.sleep(1)
+        # time.sleep(1)
 
 
 fr1 = videostream.read()
