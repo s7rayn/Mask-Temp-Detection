@@ -371,11 +371,12 @@ def show_frame():
             if temp_normal:
                 # labelt = "Temeparature Normal"
                 # cv2.putText(frame1, labelt.title(), (135, 880), cv2.FONT_HERSHEY_PLAIN, 2, (34, 139, 34), 2)
-                cv2.putText(frame1, "S MASKOU", (230, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
-                cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 210), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2,
-                            cv2.LINE_AA)
-                m_t_k = cv2.resize(m_t_k, (frame1.shape[1], frame1.shape[0]))
-                dst = cv2.addWeighted(frame1, 0.5, m_t_k, 0.2, 0)
+                if fr > 30:
+                    cv2.putText(frame1, "S MASKOU", (230, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
+                    cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 210), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2,
+                                cv2.LINE_AA)
+                    m_t_k = cv2.resize(m_t_k, (frame1.shape[1], frame1.shape[0]))
+                    dst = cv2.addWeighted(frame1, 0.5, m_t_k, 0.2, 0)
 
             else:
                 # 880
@@ -402,11 +403,12 @@ def show_frame():
             if temp_normal:
                 # labelt = "Temeparature Normal"
                 # cv2.putText(frame1, labelt.title(), (135, 336), cv2.FONT_HERSHEY_PLAIN, 2, (34, 139, 34), 2)
-                cv2.putText(frame1, "BEZ MASKY", (230, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
-                cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 366), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2,
-                            cv2.LINE_AA)
-                m_n_t_k = cv2.resize(m_n_t_k, (frame1.shape[1], frame1.shape[0]))
-                dst = cv2.addWeighted(frame1, 0.5, m_n_t_k, 0.2, 0)
+                if fr > 30:
+                    cv2.putText(frame1, "BEZ MASKY\nTEPLOTA OK", (230, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
+                    cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 366), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2,
+                                cv2.LINE_AA)
+                    m_n_t_k = cv2.resize(m_n_t_k, (frame1.shape[1], frame1.shape[0]))
+                    dst = cv2.addWeighted(frame1, 0.5, m_n_t_k, 0.2, 0)
             else:
                 # labelt = "Abnormal Temperature"
                 # 130, 880
