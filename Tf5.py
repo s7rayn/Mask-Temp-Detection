@@ -215,31 +215,19 @@ def gfg():
     previous = ""
 
 
-# def detect_frame():
-#     while True:
-#         frame = videostream.read()
-#         frame = cv2.flip(frame, 1)
-#         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-#         frame_resized = cv2.resize(frame_rgb, (width, height))
-#         detection_process(frame_resized)
-
 def temp_dete():
-    # while True:
-    # ser.write(b"Hello from Raspberry Pi!\n")
     while True:
         global fr
         global temp_normal
         global ser
         line = ser.readline().decode('utf-8').rstrip()
         if line:
-            json_obj = json.loads(line)
-            fr = json_obj["ObjectTemp"]
+            fr = json.loads(line)["ObjectTemp"]
             if fr > 37:
                 temp_normal = False
             else:
                 temp_normal = True
             # time.sleep(1)
-            # return json_obj["ObjectTemp"]
 
 
 # def temp_dete():
@@ -381,9 +369,10 @@ def show_frame():
                 timer = threading.Timer(5.0, gfg)
                 timer.start()
             if temp_normal:
-                labelt = "Temeparature Normal"
-                cv2.putText(frame1, labelt.title(), (135, 880), cv2.FONT_HERSHEY_PLAIN, 2, (34, 139, 34), 2)
-                cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 910), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2,
+                # labelt = "Temeparature Normal"
+                # cv2.putText(frame1, labelt.title(), (135, 880), cv2.FONT_HERSHEY_PLAIN, 2, (34, 139, 34), 2)
+                cv2.putText(frame1, "S MASKOU", (230, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
+                cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 210), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2,
                             cv2.LINE_AA)
                 m_t_k = cv2.resize(m_t_k, (frame1.shape[1], frame1.shape[0]))
                 dst = cv2.addWeighted(frame1, 0.5, m_t_k, 0.2, 0)
@@ -393,10 +382,11 @@ def show_frame():
                 # labelt = "Abnormal Temperature"
                 # cv2.putText(frame1, labelt.title(), (130, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0,0,255), 2)
                 cv2.putText(frame1, "S MASKOU", (230, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
-                # cv2.putText(frame1,'{0:.2f}'.format(fr),(250,910),cv2.FONT_HERSHEY_SIMPLEX,1,(255,255,0),2,cv2.LINE_AA)
-                # m_k_t_n = cv2.resize(m_k_t_n, (frame1.shape[1], frame1.shape[0]))
-                # dst = cv2.addWeighted(frame1,0.5,m_k_t_n,0.2,0)
-                dst = cv2.addWeighted(frame1, 0.5, dst, 0.2, 0)
+                cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 210), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2,
+                            cv2.LINE_AA)
+                m_k_t_n = cv2.resize(m_k_t_n, (frame1.shape[1], frame1.shape[0]))
+                dst = cv2.addWeighted(frame1, 0.5, m_k_t_n, 0.2, 0)
+                # dst = cv2.addWeighted(frame1, 0.5, dst, 0.2, 0)
 
         if object_name == "no mask":
             # print("no mask")
@@ -410,34 +400,33 @@ def show_frame():
                 timer.start()
 
             if temp_normal:
-                labelt = "Temeparature Normal"
-                cv2.putText(frame1, labelt.title(), (135, 336), cv2.FONT_HERSHEY_PLAIN, 2, (34, 139, 34), 2)
+                # labelt = "Temeparature Normal"
+                # cv2.putText(frame1, labelt.title(), (135, 336), cv2.FONT_HERSHEY_PLAIN, 2, (34, 139, 34), 2)
+                cv2.putText(frame1, "BEZ MASKY", (230, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
                 cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 366), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2,
                             cv2.LINE_AA)
                 m_n_t_k = cv2.resize(m_n_t_k, (frame1.shape[1], frame1.shape[0]))
                 dst = cv2.addWeighted(frame1, 0.5, m_n_t_k, 0.2, 0)
             else:
-                labelt = "Abnormal Temperature"
+                # labelt = "Abnormal Temperature"
                 # 130, 880
                 # cv2.putText(frame1, labelt.title(), (130, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0,0,255), 2)
                 cv2.putText(frame1, "BEZ MASKY", (230, 180), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
                 cv2.putText(frame1, '{0:.2f}'.format(fr), (250, 250), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2,
                             cv2.LINE_AA)
                 m_n_t_n = cv2.resize(m_n_t_n, (frame1.shape[1], frame1.shape[0]))
-                dst = cv2.addWeighted(frame1,0.5,m_n_t_n,0.2,0)
+                dst = cv2.addWeighted(frame1, 0.5, m_n_t_n, 0.2, 0)
 
         # cv2.namedWindow("Object detector", cv2.WND_PROP_FULLSCREEN)
         # cv2.setWindowProperty("Object detector", cv2.WND_PROP_FULLSCREEN, 1)
         # dst = cv2.addWeighted(frame1,0.5,m_t_k,0.2,0)
-        cv2.imshow('Object detector', dst)
+        cv2.imshow('Detekcia masky a teploty', dst)
         if cv2.waitKey(1) == ord('q'):
             break
 
 
 # show = Thread(target=show_frame)
-det_frame = Thread(target=detect_frame)
-# show.start()
-det_frame.start()
+det_frame = Thread(target=detect_frame).start()
 
 ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
 ser.reset_input_buffer()
